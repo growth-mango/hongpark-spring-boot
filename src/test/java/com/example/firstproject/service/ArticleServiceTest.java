@@ -2,6 +2,7 @@ package com.example.firstproject.service;
 
 import com.example.firstproject.dto.ArticleForm;
 import com.example.firstproject.entity.Article;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -60,6 +61,7 @@ class ArticleServiceTest {
     }
 
     @Test
+    @Transactional // 테스트 종료 후 변경된 데이터를 롤백 처리
     void create_성공_title과_content만_있는_dto_입력() {
         // 예상
         String title = "라라라라";
@@ -75,6 +77,7 @@ class ArticleServiceTest {
     }
 
     @Test
+    @Transactional
     void create_실패_id가_포함된_dto_입력() {
         // 예상
         String title = "라라라라";
