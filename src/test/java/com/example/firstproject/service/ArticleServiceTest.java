@@ -116,7 +116,7 @@ class ArticleServiceTest {
     void update_성공_존재하는_id와_title만_있는_dto_입력() {
         Long id = 3L ;
         String title = "CCCC";
-        String content = null ;
+//        String content = null ;
         ArticleForm dto =  new ArticleForm(id, title, null);
         Article expected = new Article(3L, "CCCC", "3333");
 
@@ -146,9 +146,9 @@ class ArticleServiceTest {
     @Test
     @Transactional
     void update_실패_id만_있는_dto_입력() {
-        Long id = 3L ;
-//        String title = null;
-//        String content = null;
+        Long id = -1L ;
+//        String title = null ;
+//        String content = null ;
         ArticleForm dto = new ArticleForm(id, null, null);
         Article expected = null;
 
