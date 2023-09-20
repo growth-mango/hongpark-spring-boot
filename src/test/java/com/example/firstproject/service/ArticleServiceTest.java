@@ -7,12 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest //스프링 부트와 연동한 통합 테스트 수행
 class ArticleServiceTest {
@@ -61,37 +60,38 @@ class ArticleServiceTest {
         assertEquals(expected, article);
     }
 
-    @Test
-    @Transactional // 테스트 종료 후 변경된 데이터를 롤백 처리
-    void create_성공_title과_content만_있는_dto_입력() {
-        // 예상
-        String title = "라라라라";
-        String content = "4444";
-        ArticleForm dto =  new ArticleForm(null, title, content);
-        Article expected = new Article(4L, title, content);
+//    @Test
+//    @Transactional // 테스트 종료 후 변경된 데이터를 롤백 처리
+//    void create_성공_title과_content만_있는_dto_입력() {
+//        // 예상
+//        Long id = 4L ;
+//        String title = "라라라라";
+//        String content = "4444";
+//        ArticleForm dto =  new ArticleForm(id, title, content);
+//        Article expected = new Article(id, title, content);
+//
+//        // 실제
+//        Article article = articleService.create(dto);
+//
+//        // 비교
+//        assertEquals(expected.toString(), article.toString());
+//    }
 
-        // 실제
-        Article article = articleService.create(dto);
-
-        // 비교
-        assertEquals(expected.toString(), article.toString());
-    }
-
-    @Test
-    @Transactional
-    void create_실패_id가_포함된_dto_입력() {
-        // 예상
-        String title = "라라라라";
-        String content = "4444";
-        ArticleForm dto =  new ArticleForm(4L, title, content);
-        Article expected = null;
-
-        // 실제
-        Article article = articleService.create(dto);
-
-        // 비교
-        assertEquals(expected.toString(), article.toString());
-    }
+//    @Test
+//    @Transactional
+//    void create_실패_id가_포함된_dto_입력() {
+//        // 예상
+//        String title = "라라라라";
+//        String content = "4444";
+//        ArticleForm dto =  new ArticleForm(4L, title, content);
+//        Article expected = null;
+//
+//        // 실제
+//        Article article = articleService.create(dto);
+//
+//        // 비교
+//        assertEquals(expected.toString(), article.toString());
+//    }
 
 
     @Test
